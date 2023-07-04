@@ -1,0 +1,19 @@
+
+ .gaugetemp{
+    position: absolute;
+    top: 0px;
+    left: 30px;
+ }
+
+ .gaugecooling{
+    position: absolute;
+    top: 165px;
+    left: 0px;
+ }
+
+ .gaugefuel{
+    position: absolute;
+    top: 165px;
+    left: 0px;
+ }
+

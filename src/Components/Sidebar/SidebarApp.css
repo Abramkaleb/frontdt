@@ -1,0 +1,94 @@
+.Logo{
+Position: fixed;
+top: 37px;
+left: 12px;
+color: #ffffff;
+}
+
+.Logotext{
+Position: fixed;
+top: 46px;
+left: 90px;
+color: #ffffff;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+font-style: bold;
+font-size: 10px;
+}
+
+/* .Sidebar {
+  position: fixed;
+  top: 0px;
+  left: 1600px;
+  height: 9000px;
+  width: 210vh;
+  background-color: 	#176B87;
+} */
+
+.Sidebar2 {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 9000px;
+  width: 210px;
+  background-color: 	#272e30;
+}
+
+.Sidebackbar {
+  position: fixed;
+  top: 145px;
+  left: 0px;
+  height: 290px;
+  width: 210px;
+  background-color: 	#5c6d70;
+}
+
+/* .Sidebarstrip {
+  position: fixed;
+  top: 0px;
+  left: 209px;
+  height: 1000px;
+  width: 5px;
+  background-color: 	#d600ff;
+} */
+
+
+.SidebarList {
+  position: fixed;
+  top: 150px;
+  left: 0px;
+  height: 941px;
+  width: 210px;
+  } 
+
+.SidebarList .row {
+width:  210px;
+height: 70px;
+font-size: 20px;
+display: flex;
+color: #ffffff;
+align-items: center;
+font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.SidebarList .row:hover{
+cursor: pointer;
+background-color: #8d0000;
+}
+
+.SidebarList #active {
+  background-color: 	#8d0000;
+}
+
+
+.row #icon{
+  flex:50%;
+  display: grid;
+  place-items: center;
+  
+}
+
+.row #title{
+  flex: 80%;
+  
+  
+}

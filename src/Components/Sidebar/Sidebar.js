@@ -14,9 +14,7 @@ const Sidebar = ({children}) => {
             <div className="Logotext">
                 <h1>DIGITAL</h1>
                 <h1>TWIN</h1> 
-            <div className="Sidebackbar">
-            {/* <div className="Sidebarstrip"> */}
-            
+            <div className="Sidebackbar">       
             <ul className="SidebarList">
             {SidebarData.map((val, key) => {
             return (
@@ -25,14 +23,16 @@ const Sidebar = ({children}) => {
             </li>
             );
             })}
+
             </ul>
             </div>
             </div>
             </div>
             </div>
             </div>
-           <main className='main_container'>{children}</main>
+            <main className='main_container'>{children}</main>
             </div>
+
             );
     }
 

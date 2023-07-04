@@ -3,6 +3,7 @@
     /* height: 6000px;  */
      overflow: auto;
     margin-inline: auto;
+    
 
    
 }
@@ -27,18 +28,16 @@
 .gauge2{
     display: flex;
     position: absolute;
-    left: 505px;
+    left: 500px;
     top: 290px;
     gap: 20px;
     
 }
 
-.button{
+.buttons{
     position: absolute;
-    display: flex;
     top: 400px;
-    left: 60px;
-    gap: 70px;
+    left: 40px;
  
 }
 
@@ -46,7 +45,7 @@
     position: absolute;
     display: flex;
     top: 600px;
-    left: 50px;
+    left: 140px;
     gap: 90px;
 
 }

@@ -1,56 +1,53 @@
-import React, { useState, useEffect } from "react";
-import { Chart } from "react-google-charts";
+import React, {useEffect, useState} from 'react'
+import './Cooling.css'
+import Chart from 'react-google-charts'
+import axios from 'axios'
 
-
-
-function getRandomNumber() {
-  return Math.random() * 100;
-}
-
-export function getData() {
-  return [
-    ["Label", "Value"],
-    ["Cooling", getRandomNumber()],
-  ];
-}
-
-export const options = {
-  max:150,
-  majorTicks: ['0','30','60','90','120','150'],
-  greenFrom:0,
-  greenTo:90,
-  yellowFrom: 90,
-  yellowTo: 120,
-  redFrom: 120,
-  redTo:150,
-  minorTicks: 10,
-  width: 180,
-};
-
-export function Cooling() {
-  const [data, setData] = useState(getData);
+const Cooling = () => {
+  const Getrealtime = 'http://localhost:8000/api';
+  const [coolingValue, setCoolingValue] = useState(0);
+  const getcooling = async () => 
+  {
+    try {
+      const response = await axios.get(`${Getrealtime}/antares`);
+      const value = parseInt(response["data"]["record"]["cooling"]) 
+      setCoolingValue(value)
+      console.log(coolingValue)
+    } catch (e) {
+      console.log(e.message);
+    }
+  }
 
   useEffect(() => {
-    const id = setInterval(() => {
-      setData(getData());
-    }, 3000);
-
-    return () => {
-      clearInterval(id);
-    };
-  });
+    getcooling();
+  }, ) 
 
   return (
-    <Chart
-      chartType="Gauge"
-      width="100%"
-      // height="400px"
-      data={data}
-      options={options}
-    />
-  );
+    <div className='cooling-container'>
+      <Chart 
+        width={'200px'}
+        height={'200px'}
+        chartType="Gauge"
+        loader={<div>Cooling Chart</div>}
+        data={[
+          ['Label', 'Value'],
+          ['Cooling', coolingValue]
+        ]}
+        options={{
+          max:150,
+          majorTicks: ['0','30','60','90','120','150'],
+          greenFrom:0,
+          greenTo:90,
+          yellowFrom: 90,
+          yellowTo: 120,
+          redFrom: 120,
+          redTo:150,
+          minorTicks: 10,
+          width: 180,
+        }}
+      />
+    </div>
+  )
 }
 
-export default Cooling;
-
-
+export default Cooling

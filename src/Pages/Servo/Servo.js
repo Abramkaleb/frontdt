@@ -1,56 +1,54 @@
-import React, { useState, useEffect } from "react";
-import { Chart } from "react-google-charts";
+import React, {useState, useEffect} from 'react'
+// import './Rpm.css'
+import { Chart } from 'react-google-charts';
+import axios from 'axios'
 
+const Servo = () => {
 
-
-function getRandomNumber() {
-  return Math.random() * 100;
-}
-
-export function getData() {
-  return [
-    ["Label", "Value"],
-    ["Throttle", getRandomNumber()],
-  ];
-}
-
-export const options = {
-  max:180,
-  majorTicks: ['0','30','60','90','120','150', '180'],
-  greenFrom: 0,
-  greenTo: 90,
-  yellowFrom: 90,
-  yellowTo: 150,
-  redFrom: 150,
-  redTo:180,
-  minorTicks: 6,
-  width: 250,
-}
-
-export function Servo() {
-  const [data, setData] = useState(getData);
+  const Getrealtime = 'http://localhost:8000/api';
+  const [rpmValue, setRpmValue] = useState(0);
+  const getrpm = async () => 
+  {
+    try {
+      const response = await axios.get(`${Getrealtime}/antares`);
+      const value = parseInt(response["data"]["record"]["rpm"]) 
+      setRpmValue(value)
+      console.log(rpmValue)
+    } catch (e) {
+      console.log(e.message);
+    }
+  }
 
   useEffect(() => {
-    const id = setInterval(() => {
-      setData(getData());
-    }, 3000);
-
-    return () => {
-      clearInterval(id);
-    };
-  });
+    getrpm();
+  }, )
 
   return (
-    <Chart
-      chartType="Gauge"
-      width="100%"
-      height="250px"
-      data={data}
-      options={options}
-    />
-  );
+    <div className='exhaust-container'>
+      <Chart className='gauge-chart'
+        width={'250px'}
+        height={'250px'}
+        chartType="Gauge"
+        loader={<div>Exhaust Chart</div>}
+        data={[
+          ['Label', 'Value'],
+          ['Throttle', rpmValue]
+        ]}
+        options={{
+          max:2500,
+          majorTicks: ['0','500','1000','1500','2000','2500'],
+          greenFrom: 0,
+          greenTo: 1000,
+          yellowFrom: 1000,
+          yellowTo: 2000,
+          redFrom: 2000,
+          redTo:2500,
+          minorTicks: 10,
+          width: 250,
+        }}
+        />
+    </div>
+  )
 }
 
-export default Servo;
-
-
+export default Servo

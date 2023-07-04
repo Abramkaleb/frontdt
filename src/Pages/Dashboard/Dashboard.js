@@ -10,8 +10,14 @@ import Rpm from "../Rpm/Rpm";
 import Servo from "../Servo/Servo";
 import Yanmar65 from "../Image/Yanmar65.png";
 import Button from '@mui/material/Button';
-import Streamchart from './Streamchart';
 
+import Buttons from './Buttons'
+
+import Streamchartrpm from './Streamchartrpm';
+import Streamchartfuel from './Streamchartfuel';
+
+
+import Streamchart from './Streamchart';
 
 
 
@@ -40,19 +46,21 @@ return (
    <Fuel />
    </div>
 
-   <div className="button">
-   <Button variant="contained" disableElevation size="large" color="error"> - THROTTLE</Button>
-   <Button variant="contained" disableElevation size="large" color="success"> + THROTTLE</Button>
+   <div className="buttons">
+   {/* <Button variant="contained" disableElevation size="large" color="error"> - THROTTLE</Button>
+   <Button variant="contained" disableElevation size="large" color="success"> + THROTTLE</Button> */}
+  <Buttons /> 
+   
    </div>
 
    <div className="chartjs">  
-    <Streamchart />
-    <Streamchart />
+    <Streamchartrpm />
+    {/* <Streamchartfuel /> */}
     </div>
 
     <div className="chartjs2">  
-    <Streamchart />
-    <Streamchart />
+    {/* <Streamchart />
+    <Streamchart /> */}
     </div>
 
     

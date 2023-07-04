@@ -4,24 +4,24 @@ import { Chart } from 'react-chartjs-2';
 import { useEffect, useRef, useState, createBackgroundGradient } from "react";
 
 
+function getRandomNumber() {
+    return Math.random();
+  }
+  
 
-const Streamchartrpm = () => {
-
-    
+const Streamchartfuel = () => {
     
     const chartRef = useRef(null);
     const [chartData, setChartData] = useState({
     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
     datasets: [{
-        data: [100, 80, 40, 90, 80, 30],
-
-
-        label: 'Engine RPM',
-        borderWidth: 5,
-        backgroundColor: '#5c6d70',
-        bordercolor: 'black',
+        data: [getRandomNumber(), getRandomNumber(), getRandomNumber(), getRandomNumber(), getRandomNumber(), getRandomNumber()], //ubah data
+        label: 'FUEL',
+        borderWidth: 6,
+        backgroundColor: 'green',
+        bordercolor: 'green',
         style:{ width: '300px', height: '600px'},
-        fill: true,
+        fill: false,
         tension: 0.32,
     }],
     });
@@ -49,4 +49,4 @@ const Streamchartrpm = () => {
     )
 }
 
-export default Streamchartrpm;
+export default Streamchartfuel;

@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from 'react'
-// import './Exhaust.css'
-import { Chart } from 'react-google-charts';
+import React, { useState, useEffect } from 'react';
+import { Chart } from "react-google-charts";
 import axios from 'axios'
 
-const Temp = () => {
+
+
+const Exhaust = () => {
   const Getrealtime = 'http://localhost:8000/api';
   const [exhaustValue, setExhaustValue] = useState(0);
   const getexhaust = async () => 
@@ -17,24 +18,22 @@ const Temp = () => {
       console.log(e.message);
     }
   }
+}
 
-  useEffect(() => {
-    getexhaust();
-  }, )
+useEffect(() => {
+  getexhaust();
+},)
 
-  return (
-    <div className='exhaust-container'>
-      <Chart className='gauge-chart'
-        width={'200px'}
-        height={'200px'}
-        chartType="Gauge"
-        loader={<div>Exhaust Chart</div>}
-        data={[
-          ['Label', 'Value'],
-          ['Temp', exhaustValue]
-        ]}
-        options={{
-          max:300,
+
+export function getData() {
+  return [
+    ["Label", "Value"],
+    ["Temp", exhaustValue],
+  ];
+}
+
+export const options = {
+  max:300,
           majorTicks: ['0','50','100','150','200','250','300'],
           greenFrom:0,
           greenTo:225,
@@ -44,11 +43,32 @@ const Temp = () => {
           redTo:300,
           minorTicks: 10,
           width: 180,
+};
 
-        }}
-        />
-    </div>
-  )
+export function Temp() {
+  const [data, setData] = useState(getData);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setData(getData());
+    }, 3000);
+
+    return () => {
+      clearInterval(id);
+    };
+  });
+
+  return (
+    <Chart
+      chartType="Gauge"
+      // width="100%"
+      // height="300px"
+      data={data}
+      options={options}
+    />
+  );
 }
 
 export default Temp;
+
+

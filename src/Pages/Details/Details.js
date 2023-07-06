@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageResizer } from 'react-image-resizer';
+// import { ImageResizer } from 'react-image-resizer';
 import './Details.css';
 import Spek from "../Image/Spesifikasi.png";
 

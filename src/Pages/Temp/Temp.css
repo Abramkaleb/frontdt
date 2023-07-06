@@ -1,12 +1,12 @@
-.gaugecooling{
+.gaugetemp{
     padding: 10px;
-    color: #f7f7f7;
-    /* background-color: #494949; */
+    color: #ffffff;
+    /* background-color: #edea00; */
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-style: bold;
     font-size: 10px;
     text-align: center;
     width: 200px;
-    height: 220px;
+    height: 40px;
   }
   

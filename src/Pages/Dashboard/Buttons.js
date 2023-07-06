@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import './Buttons.css';
 
-const Getrealtime = 'http://localhost:8000/api'; 
+const Getrealtime = 'http://103.175.219.228/api'; 
 
 const Buttons = () => {
   const [servoValue, setServoValue] = useState(0);

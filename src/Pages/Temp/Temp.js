@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react'
-// import './Exhaust.css'
+import './Temp.css'
 import { Chart } from 'react-google-charts';
 import axios from 'axios'
 
 const Temp = () => {
-  const Getrealtime = 'http://localhost:8000/api';
+  const Getrealtime = 'http://103.175.219.228/api';
   const [exhaustValue, setExhaustValue] = useState(0);
   const getexhaust = async () => 
   {
@@ -23,10 +23,13 @@ const Temp = () => {
   }, )
 
   return (
+
+    <div className='gaugetemp'>
+      <h1>TEMP</h1>
+      
     <div className='exhaust-container'>
       <Chart className='gauge-chart'
-        width={'200px'}
-        height={'200px'}
+      
         chartType="Gauge"
         loader={<div>Exhaust Chart</div>}
         data={[
@@ -36,17 +39,18 @@ const Temp = () => {
         options={{
           max:300,
           majorTicks: ['0','50','100','150','200','250','300'],
-          greenFrom:0,
-          greenTo:225,
+          // greenFrom:0,
+          // greenTo:225,
           yellowFrom: 225,
           yellowTo: 270,
           redFrom: 270,
           redTo:300,
-          minorTicks: 10,
+          minorTicks: 0,
           width: 180,
 
         }}
         />
+    </div>
     </div>
   )
 }

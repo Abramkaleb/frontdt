@@ -1,0 +1,28 @@
+.gaugerpm{
+  padding: 10px;
+  height: 50px;
+  width: 300px;
+
+  padding-top: 50px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: bold;
+  font-size: 15px;
+  text-align: center;
+}
+
+
+.gaugerpmtitle{
+  padding: 0px;
+  height: 50px;
+  width: 300px;
+  color: #000000;
+  background-color: #edea00;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: bold;
+  font-size: 15px;
+  text-align: center;
+
+  position: absolute;
+  padding-top: 5px;
+  left: 300px;
+}

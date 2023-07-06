@@ -1,61 +1,165 @@
 
 .page{
-    /* height: 6000px;  */
-     overflow: auto;
-    margin-inline: auto;
+    height: 1500px; 
+    width: 100%;
+     /* overflow: auto; */
+    /* margin-inline: auto; */
+    background-color: #000000;
     
 
-   
+
 }
 
 
 .yanmar{
+    height: auto;
+    background-color: #1f1f1f;
     position: absolute;
-    top: 50px;
+    top: 0px;
     margin-left: 240px;
+    padding: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
 
 
+
+
+
+
 .gauge1{
-    
-    left: 550px;
-    top: 50px;
+    background-color: #464646;
     display: flex;
+    height: 400px;
+    width: 600px;
+    padding-left: 20px;
+    padding-right: 30px;
+    padding-top: 10px;
+    left: 770px;
+    top: 0px;
+    gap: 30px;
+    
     position: absolute;
-   
+ 
 }
 
 .gauge2{
     display: flex;
+    background-color: #4e4e4e;
     position: absolute;
-    left: 500px;
-    top: 290px;
-    gap: 20px;
-    
+    left: 770px;
+    top: 320px;
+
+    padding-bottom: 10px;
+    gap: 0px;
+
 }
 
 .buttons{
+    background-color: #edea00;
+    padding: 30px;
+    padding-left: 72.5px;
+    padding-right: 72.5px;
     position: absolute;
-    top: 400px;
-    left: 40px;
+    top: 440px;
+    left: 240px;
  
 }
 
-.chartjs{
+.chartjsrpm{
     position: absolute;
-    display: flex;
-    top: 600px;
-    left: 140px;
-    gap: 90px;
+    display:flex;
+    top: 650px;
+    left: 290px;
+  
 
 }
 
-.chartjs2{
+.chartjstemp{
     position: absolute;
-    display: flex;
-    top: 900px;
-    left: 50px;
-    gap: 90px;
-
+    display:flex;
+    top: 700px;
+    left: 900px;
+    
 }
+
+
+.chartjscooling{
+    position: absolute;
+    display:flex;
+    top: 1060px;
+    left: 280px;
+    
+}
+
+.chartjsfuel{
+    position: absolute;
+    display:flex;
+    top: 1010px;
+    left: 900px;
+ 
+}
+
+
+
+
+  .charttitlerpm{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style: bold;
+    font-size: 15px;
+    text-align: center;
+    color: #000000;
+    background-color: #c0bd00;
+    position: absolute;
+    left: 263px;
+    top: 640px;
+    padding: 5px;
+    padding-left: 140px;
+    padding-right: 140px;
+  }
+  
+  .charttitletemp{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style: bold;
+    font-size: 15px;
+    text-align: center;
+    color: #000000;
+    background-color: #c0bd00;
+    position: absolute;
+    left: 870px;
+    top: 640px;
+    padding: 5px;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  
+  .charttitlecooling{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style: bold;
+    font-size: 15px;
+    text-align: center;
+    color: #000000;
+    background-color: #c0bd00;
+    position: absolute;
+    left: 260px;
+    top: 1000px;
+    padding: 5px;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .charttitlefuel{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style: bold;
+    font-size: 15px;
+    text-align: center;
+    color: #000000;
+    background-color: #c0bd00;
+    position: absolute;
+    left: 870px;
+    top: 1000px;
+    padding: 5px;
+    padding-left: 164px;
+    padding-right: 164px;
+  }
 

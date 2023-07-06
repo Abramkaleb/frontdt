@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react'
-// import './Rpm.css'
+import './Rpm.css'
 import { Chart } from 'react-google-charts';
 import axios from 'axios'
 
 const Rpm = () => {
 
-  const Getrealtime = 'http://localhost:8000/api';
+  const Getrealtime = 'http://103.175.219.228/api';
   const [rpmValue, setRpmValue] = useState(0);
   const getrpm = async () => 
   {
@@ -24,30 +24,32 @@ const Rpm = () => {
   }, )
 
   return (
-    <div className='exhaust-container'>
-      <Chart className='gauge-chart'
-        width={'250px'}
-        height={'250px'}
-        chartType="Gauge"
-        loader={<div>Exhaust Chart</div>}
-        data={[
-          ['Label', 'Value'],
-          ['Rpm', rpmValue]
-        ]}
-        options={{
-          max:2500,
-          majorTicks: ['0','500','1000','1500','2000','2500'],
-          greenFrom: 0,
-          greenTo: 1000,
-          yellowFrom: 1000,
-          yellowTo: 2000,
-          redFrom: 2000,
-          redTo:2500,
-          minorTicks: 10,
-          
-        }}
-        />
-    </div>
+    <><div className='gaugerpmtitle'>
+      <h1>RPM</h1>
+    </div><>
+    
+    </><div className='gaugerpm'>
+        <Chart className='gauge-chart'
+          width={'250px'}
+          height={'250px'}
+          chartType="Gauge"
+          data={[
+            ['Label', 'Value'],
+            ['x100/min', rpmValue]
+          ]}
+          options={{
+            max: 2500,
+            majorTicks: ['0', '5', '10', '150', '200', '250'],
+            greenFrom: 0,
+            // greenTo: 1000,
+            // yellowFrom: 2000,
+            // yellowTo: 2250,
+            redFrom: 2100,
+            redTo: 2500,
+            minorTicks: 10,
+          }} />
+
+      </div></>
   )
 }
 

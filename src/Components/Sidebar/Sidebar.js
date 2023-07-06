@@ -10,9 +10,9 @@ const Sidebar = ({children}) => {
             <div className="Sidebar">
             <div className="Sidebar2">
             <div className="Logo">
-            <FaceIcon sx={{fontSize: 70}}/>
+            <FaceIcon sx={{fontSize: 50}}/>
             <div className="Logotext">
-                <h1>DIGITAL</h1>
+                <h1>DIGITAL</h1>  
                 <h1>TWIN</h1> 
             <div className="Sidebackbar">       
             <ul className="SidebarList">

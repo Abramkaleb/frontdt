@@ -1,17 +1,17 @@
 import React, {useState, useEffect} from 'react'
-// import './Rpm.css'
+import './Servo.css'
 import { Chart } from 'react-google-charts';
 import axios from 'axios'
 
 const Servo = () => {
 
-  const Getrealtime = 'http://localhost:8000/api';
+  const Getrealtime = 'http://103.175.219.228/api';
   const [rpmValue, setRpmValue] = useState(0);
   const getrpm = async () => 
   {
     try {
       const response = await axios.get(`${Getrealtime}/antares`);
-      const value = parseInt(response["data"]["record"]["rpm"]) 
+      const value = parseInt(response["data"]["record"]["servo"]) 
       setRpmValue(value)
       console.log(rpmValue)
     } catch (e) {
@@ -24,30 +24,32 @@ const Servo = () => {
   }, )
 
   return (
-    <div className='exhaust-container'>
-      <Chart className='gauge-chart'
-        width={'250px'}
-        height={'250px'}
-        chartType="Gauge"
-        loader={<div>Exhaust Chart</div>}
-        data={[
-          ['Label', 'Value'],
-          ['Throttle', rpmValue]
-        ]}
-        options={{
-          max:2500,
-          majorTicks: ['0','500','1000','1500','2000','2500'],
-          greenFrom: 0,
-          greenTo: 1000,
-          yellowFrom: 1000,
-          yellowTo: 2000,
-          redFrom: 2000,
-          redTo:2500,
-          minorTicks: 10,
-          width: 250,
-        }}
-        />
-    </div>
+    <><><div className='gaugeservotitle'>
+      <h1>THROTTLE</h1>
+    </div><>
+
+      </></><div className='gaugeservo'>
+         <Chart className='gauge-chart'
+          width={'250px'}
+          height={'250px'}
+          chartType="Gauge"
+          data={[
+            ['Label', 'Value'],
+            ['degree', rpmValue]
+          ]}
+          options={{
+            max: 110,
+            majorTicks: ['47', '', '', '75', '', '', '110'],
+            // greenFrom: 0,
+            // greenTo: 1000,
+            yellowFrom: 0,
+            yellowTo: 5,
+            redFrom: 91,
+            redTo: 110,
+            minorTicks: 4,
+            width: 250,
+          }} />
+      </div></>
   )
 }
 

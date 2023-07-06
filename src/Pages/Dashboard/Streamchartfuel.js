@@ -1,33 +1,69 @@
 import React from "react";
+import './Streamchart.css';
 import 'chart.js/auto';
 import { Chart } from 'react-chartjs-2';
+import axios from 'axios';
 import { useEffect, useRef, useState, createBackgroundGradient } from "react";
 
 
-function getRandomNumber() {
-    return Math.random();
-  }
-  
-
 const Streamchartfuel = () => {
-    
+    const Getrealtime = 'http://103.175.219.228/api';
     const chartRef = useRef(null);
+    const [dataChart, setDataChart] = useState();
     const [chartData, setChartData] = useState({
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-    datasets: [{
-        data: [getRandomNumber(), getRandomNumber(), getRandomNumber(), getRandomNumber(), getRandomNumber(), getRandomNumber()], //ubah data
-        label: 'FUEL',
-        borderWidth: 6,
-        backgroundColor: 'green',
-        bordercolor: 'green',
-        style:{ width: '300px', height: '600px'},
-        fill: false,
-        tension: 0.32,
-    }],
-    });
+        datasets: [{
+            data: [],
+            label: 'FUEL TANK',
+            borderWidth: 3,
+            backgroundColor: '#edea00',
+            bordercolor: '#edea00',
+            style:{ width: '150px', height: '300px'},
+            fill: true,
+            tension: 0.32,
+            options: {
+                scales: {
+                    x: {
+                        type: 'timeseries',
+                    }
+                }
+            }
+        }],
+        });
+    const getChartFuel = async () =>
+  {
+    try {
+      const response = await axios.get(`${Getrealtime}/chart/fuel`);
+      const data = response["data"];
+      setDataChart(data["data"]);
+      console.log(dataChart);
+      setChartData({
+        datasets: [{
+            data: data["data"],
+            label: 'FUEL TANK',
+            borderWidth: 3,
+            backgroundColor: '#000000',
+            bordercolor: '#edea00',
+            style:{ width: '150px', height: '300px'},
+            fill: false,
+            tension: 0.32,
+            options: {
+                scales: {
+                    x: {
+                        type: 'timeseries',
+                    }
+                }
+            }
+        }],
+        });
 
+    } catch (e) {
+      console.log(e.message);
+    }
+  }
 
-    useEffect(() => {
+  useEffect(() => {
+    getChartFuel();
+
     const chart = chartRef.current;
 
     if (chart) {
@@ -37,15 +73,33 @@ const Streamchartfuel = () => {
         }]
         });
     }
-    }, []);
+  },[]);
+
+  useEffect(() =>{
+    // Schedule the API call every 5 seconds
+    const intervalId = setInterval(() => {
+        getChartFuel();
+      }, 5000);
+  
+      // Clean up the interval when the component unmounts
+      return () => {
+        clearInterval(intervalId);
+      };
+  },[dataChart]);
     
     
-    return (
-    <div> 
-        <h5>Chart</h5>
-        <Chart id="chart1" type='line' data={chartData} width={500}  />
-        <h5>Chart end</h5>
-    </div>  
+  return (
+   
+
+
+    <div className="judul">
+      <div className="chart">
+              <h1></h1>
+              <Chart id="chart1" type='line' data={chartData} width={450} height={200} />
+              <h1></h1>
+          </div>
+          </div>
+
     )
 }
 

@@ -1,11 +1,10 @@
 
 .pagedashboard{
-  height: 6000px; /* Atur tinggi sesuai kebutuhan */
-  overflow: auto; /* Membuat laman dapat di-scroll */
+  height: 6000px; 
+  overflow: auto; 
   width:1100px;
 margin-inline: auto;
-/* margin-left: 130px; */
-/* border: 3px solid black; */
+
 
 }
 
@@ -13,8 +12,6 @@ margin-inline: auto;
 background-color: white;
 height: 5756px ;
 margin-left: 120px;
-  /* position: relative; */
-  /* margin-left: 150px; */
- /* padding: 200; */
+
 }
 
